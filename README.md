@@ -1,4 +1,4 @@
-# :books: Estudos sobre Design Patterns e Princípios
+# :books: Estudos sobre Design Patterns e Princípios no desenvolvimento de software
 
 ## Princípios:
 
