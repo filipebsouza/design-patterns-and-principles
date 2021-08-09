@@ -1,4 +1,4 @@
-# :lock: :key: Open Close Principle
+# :lock: :key: Open-Closed Principle
 
 ## Fechado para modificação
 
