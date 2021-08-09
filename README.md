@@ -8,7 +8,7 @@
 
 - Os princípios seriam os seguintes:
     - __S__: Single Responsability Principle (Princípio da resposabilidade única).
-    - __O__: [Open-Closed Principle](https://github.com/filipebsouza/design-patterns-and-principles/tree/main/docs/principles/solid/ocp) (Princípio do aberto-fechado).
+    - __O__: [Open-Closed Principle](docs/principles/solid/ocp/README.md) (Princípio do aberto-fechado).
     - __L__: Liskov Substitution Principle (Princípio da substituição de Liskov).
     - __I__: Interface Segregation Principle (Princípio da Segregação da Interface).
     - __D__: Dependency Inversion Principle (Princípio da inversão da dependência).
