@@ -65,7 +65,7 @@ namespace Models
 
 __Descrição do cenário primeira modificação:__
 
-- Dado que surge a necessidade de termos registro de *__`Empregado`__* que possa ser ou não __Gerente__. Ainda mais se ele for gerente o comportamento da sua *Conta* é diferente de uma empregado normal.
+- Dado que surge a necessidade de termos registro de *__`Empregado`__* que possa ser ou não __Gerente__. Ainda mais se ele for gerente o comportamento da sua *Conta* é diferente de um empregado normal.
 
 :warning: :warning: __POSSÍVEL VIOLAÇÃO:__ :warning: :warning:
 
@@ -79,9 +79,9 @@ __Descrição do cenário primeira modificação:__
 
 - Resposta: durante o processo de desenvolvimento, talvez não faça sentido ser aplicado. Por quê? Porque dentro do processo de desenvolvimento é normal as coisas mudarem com frequência, e pensar em não violar o OCP num primeiro momento de descoberta pode ser difícil. O que nós realmente queremos __garantir__ é que quando o código for para produção o único motivo para mudança do código seja um :bug: __Bug__ em produção.
 
-- No entanto, como todos os princípios, é preciso avaliar o quão rigosos "à doutrina" vamos ser. Talvez nesse caso de adicionar a propriedade __EhGerente__ não seja uma violação impeditiva. Ainda mais se colocarmos um valor padrão, o comportamento da classe *__`Conta`__* em nada muda.
+- No entanto, como todos os princípios, é preciso avaliar o quão rigorosos "à doutrina" vamos ser. Talvez nesse caso de adicionar a propriedade __EhGerente__ não seja uma violação impeditiva. Ainda mais se colocarmos um valor padrão, o comportamento da classe *__`Conta`__* em nada muda.
 
-- Mudanças menores devem ser avaliadas, se não houver efeito colataral talvez valem a pena violar o princípio.
+- Mudanças menores devem ser avaliadas, se não houver efeito colateral talvez valem a pena violar o princípio.
 
 - :thinking: Pensando diferente: Se fosse o caso de:
     - Mudarmos a classe *__`Empregado`__* para receber uma interface de *__`IGerente`__* que tenha inicialmente alguns dados.
