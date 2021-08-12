@@ -25,4 +25,4 @@ Para me ajudar nisso, resolvi criar este repositório como um guia para consulta
     - __I__: Interface Segregation Principle (Princípio da Segregação da Interface).
     - __D__: Dependency Inversion Principle (Princípio da inversão da dependência).
 
-fonte: https://medium.com/desenvolvendo-com-paixao/o-que-%C3%A9-solid-o-guia-completo-para-voc%C3%AA-entender-os-5-princ%C3%ADpios-da-poo-2b937b3fc530
+fontes: [Medium João Roberto da Paixão](https://medium.com/desenvolvendo-com-paixao/o-que-%C3%A9-solid-o-guia-completo-para-voc%C3%AA-entender-os-5-princ%C3%ADpios-da-poo-2b937b3fc530)

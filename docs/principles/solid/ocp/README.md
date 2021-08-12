@@ -19,7 +19,7 @@ __Descrição do cenário inicial:__
 Classe *__ `Pessoa` __*:
 
 ```csharp
-namespace Models
+namespace Modelos
 {
     public class Pessoa
     {
@@ -32,7 +32,7 @@ namespace Models
 Classe *__ `Empregado` __*:
 
 ```csharp
-namespace Models
+namespace Modelos
 {
     public class Empregado
     {
@@ -46,7 +46,7 @@ namespace Models
 Classe *__ `Conta` __*:
 
 ```csharp
-namespace Models
+namespace Modelos
 {
     public class Conta
     {
@@ -92,7 +92,7 @@ __Descrição do cenário primeira modificação:__
 * Imaginando outro cenário. Digamos que vamos criar uma enumeração para a classe *__`Pessoa`__* e ela terá o *TipoDoEmpregado*. Sendo da seguinte forma:
 
 ```csharp
-namespace Models
+namespace Modelos
 {
     public enum TipoDoEmpregado
     {
@@ -103,7 +103,7 @@ namespace Models
 ```
 
 ```csharp
-namespace Models
+namespace Modelos
 {
     public class Pessoa
     {
@@ -114,14 +114,14 @@ namespace Models
 }
 ```
 
-- Nesse momento queremos fazer o seguinte: caso a *Pessoa* seja do tipo gerente, na hora de criar o registro de *Conta* quero que seja marcado *EhGerente* como *true*.
+* Nesse momento queremos fazer o seguinte: caso a *Pessoa* seja do tipo gerente, na hora de criar o registro de *Conta* quero que seja marcado *EhGerente* como *true*.
 
 :radioactive: :radioactive: __VIOLAÇÃO__ :radioactive: :radioactive:
 
-- A classe *Conta* agora vai precisar ser modificada para adicionar o comportamento:
+* A classe *Conta* agora vai precisar ser modificada para adicionar o comportamento:
 
 ```csharp
-namespace Models
+namespace Modelos
 {
     public class Conta
     {
@@ -137,13 +137,76 @@ namespace Models
             // Violação do OCP 
             if (pessoa.TipoDoEmpregado == TipoDoEmpregado.Gerente)
             {
-                empregad0.EhGerente = true;
+                empregado.EhGerente = true;
             }
         }
     }
 }
 ```
 
-- O código só acaba tendo o requisito cumprido se nós modificarmos o comportamento interno das classes já implementadas.
+* O código só acaba tendo o requisito cumprido se nós modificarmos o comportamento interno das classes já implementadas.
 
-- E se amanhã ou depois surgir um novo *TipoDeEmpregado*? Precisaremos modificar novamente (por exemplo: *TipoDeEmpregado.Executivo*).
+* E se amanhã ou depois surgir um novo *TipoDeEmpregado*? Precisaremos modificar novamente (por exemplo: *TipoDeEmpregado. Executivo*).
+
+### Consertando as coisas :hammer_and_wrench: :gear:
+
+* Uma das formas de pensar uma refatoração que atenderia o requisito de negócio, e não feriria o OCP seria primeiramente parar de depender da classe concreta *Pessoa* e depender da interface.
+
+* A interface poderia chamar *ICandidato* e a classe *Pessoa* implementá-la.
+
+* O mesmo pode ser feito com a classe *Conta*, extraindo uma interface *IConta*.
+
+* Agora como que faríamos para a classe *Pessoa* saber se vai criar a __conta__ do *Gerente* ou *Funcionario*. Poderia ser feita uma alteração na classe *Pessoa* para que ela soubesse a instância de *IConta* que utilizará, e não delegar essa responsabilidade para dentro de *Conta*.
+
+* No caso do *Gerente* e outras especializações, estas implementariam a interface *ICandidato* e teriam suas especificidades bem como sua própria implementação de *IConta*.
+
+* Consequências no código:
+
+```csharp
+using Modelos;
+
+namespace Aplicacao
+{
+    public class Programa
+    {
+        public static void Main()
+        {
+            var candidatos = new List<ICandidato>
+            {
+                new Pessoa { Nome= "Filipe", Sobrenome = "Souza" },
+                new Gerente { Nome= "Outra", Sobrenome = "Pessoa" }
+            }
+        }
+    }
+}
+```
+
+- Classe *Pessoa*:
+
+```csharp
+namespace Modelos
+{
+    public class Pessoa : ICandidato
+    {
+        public string Nome { get; set; }
+        public string Sobrenome { get; set; }
+        public IConta Conta { get; set; } = new Conta();
+    }
+}
+```
+
+- Classe *Gerente*:
+
+```csharp
+namespace Modelos
+{
+    public class Gerente : ICandidato
+    {
+        public string Nome { get; set; }
+        public string Sobrenome { get; set; }
+        public IConta Conta { get; set; } = new ContaDeGerente();
+    }
+}
+```
+
+fontes: [IAmTimCorey Youtube Channel](https://youtu.be/VFlk43QGEgc)
