@@ -209,4 +209,10 @@ namespace Modelos
 }
 ```
 
+### Resumo para o dia-a-dia
+
+* Sempre que estiver diante de uma possível modificação de código, pare, respire e pense se vai violar o OCP.
+
+* Uma forma boa de remover o acoplamento e extender comportamentos é por meio de interfaces.
+
 fontes: [IAmTimCorey Youtube Channel](https://youtu.be/VFlk43QGEgc)
