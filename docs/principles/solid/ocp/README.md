@@ -215,4 +215,10 @@ namespace Modelos
 
 * Uma forma boa de remover o acoplamento e extender comportamentos é por meio de interfaces.
 
+### Por que violar o OCP é ruim?
+
+- Alteramos comportamentos que já funcionam e isso pode gerar bugs :bug: :bug:. Se alteramos o comportamento isso significa mexer nos testes de unidade e talvez nos lugares onde chamam este método.
+
+
+
 fontes: [IAmTimCorey Youtube Channel](https://youtu.be/VFlk43QGEgc)
