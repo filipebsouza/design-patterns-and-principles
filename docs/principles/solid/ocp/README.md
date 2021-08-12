@@ -1,8 +1,13 @@
 # :lock: :key: Open-Closed Principle
 
-## Fechado para modificação
+## Fechado para modificação e aberto para ampliação.
 
 Somente um motivo para mudança.
+
+"Quando uma única mudança em um programa resulta em uma sucessão de mudança nos módulos dependentes, o projeto tem o mau cheiro da rigidez."
+
+A chave para não violar o OCP é a abstração.
+Uma das formas do código obedecer o OCP é usando o padrão [Strategy](../../../design-patterns/behavioral/strategy/README.md) ou utilizando [Template Method](../../../design-patterns/behavioral/template-method/README.md). Esses dois padrões representam uma clara separação entre a funcionalidade genérica e a implementação detalhada dessa funcionalidade.
 
 ### *Exemplo de Violação:*
 
@@ -215,10 +220,20 @@ namespace Modelos
 
 * Uma forma boa de remover o acoplamento e extender comportamentos é por meio de interfaces.
 
+* Nem sempre todos os módulos do software poderão obedecer o OCP, a questão é medir quando vale ou não a pena violar.
+
+* Obdecer o OCP pode ser dispendioso. É necessário tempo e esforço para construir as abstrações adequadas. Abstrações também podem aumentar a complexidade do código.
+
+* Podemos usar a estratégia do "Engane-me uma vez": Escrevemos o código inicalmente esperando que ele não vai mudar. Quando ocorrer uma mudança, implementamos as abstrações que nos protegem de mudanças futuras desse tipo (Toma o primeiro tiro).
+
+* Descobrir as abstrações também é uma boa estratégia. Fazemos isso por desenvolver desde o início começando pelos testes (ajuda na descoberta e cria um bom alicerce para evolução), tendo ciclos curtos de entregar com feedback do usuário e desenvolvendo primeiro as coisas mais importantes. Esse é o cenário de desenvolvimento que vai ser o ideal para evolução de software e suas abstrações.
+
 ### Por que violar o OCP é ruim?
 
-- Alteramos comportamentos que já funcionam e isso pode gerar bugs :bug: :bug:. Se alteramos o comportamento isso significa mexer nos testes de unidade e talvez nos lugares onde chamam este método.
+* Alteramos comportamentos que já funcionam e isso pode gerar bugs :bug: :bug:. Se alteramos o comportamento isso significa mexer nos testes de unidade e talvez nos lugares onde chamam este método.
 
+* Dependendo do tipo de software que estamos lidando, alteração em uma classe existente pode desencadear uma nova compilação do módulo/namespace em que ela se encontra. Dependendo do controle de versão esse novo código alterado pode ser nocivo, seria um binário novo.
 
+* O OCP traz os maiores benefícios de se usar linguagens OOP: flexibilidade, capacidade de reutilização e facilidade de manutenção. Lembre-se de evitar a "abstração desenfreada".
 
-fontes: [IAmTimCorey Youtube Channel](https://youtu.be/VFlk43QGEgc)
+fontes: [IAmTimCorey Youtube Channel](https://youtu.be/VFlk43QGEgc), Princípios, Padrões e Práticas Ágeis em C# - Robert C. Martin e Micah Martin.
