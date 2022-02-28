@@ -1,4 +1,4 @@
-# Circuit Breaker (Disjuntor) :zap: :no_good:
+# :zap: :no_good: Circuit Breaker (Disjuntor)
 
 ## O que faz?
 
